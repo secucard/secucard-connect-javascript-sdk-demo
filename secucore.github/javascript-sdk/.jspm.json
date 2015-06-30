@@ -1,0 +1,18 @@
+ {
+  "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+       "lodash": "npm:lodash@3.9.3",
+      "superagent": "npm:superagent@1.2.0"
+    }
+  },
+ "registry": "github",
+  "dependencies": {
+    "lodash": "npm:lodash@3.9.3",
+    "superagent": "npm:superagent@1.2.0"
+  }
+}  
