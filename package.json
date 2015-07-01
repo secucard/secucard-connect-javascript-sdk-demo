@@ -28,7 +28,7 @@
     "run-sequence": "^1.1.1",
     "vinyl-paths": "^1.0.0"
   },
-  "dependencies:" {
+  "dependencies": {
     "secucard-javascript-sdk": "secucard/secucard-connect-javascript-client-lib#feature-browser-sdk"
   }
 }
