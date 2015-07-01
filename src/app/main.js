@@ -1,5 +1,5 @@
 
-import {SecucardConnect} from 'secucore-sdk';
+import {SecucardConnect} from 'javascript-sdk';
 
 var secuCardConnect = new SecucardConnect()
 

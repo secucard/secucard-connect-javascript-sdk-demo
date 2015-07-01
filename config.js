@@ -19,6 +19,7 @@ System.config({
     "babel": "npm:babel-core@5.6.15",
     "babel-runtime": "npm:babel-runtime@5.6.15",
     "core-js": "npm:core-js@0.9.18",
+    "javascript-sdk": "github:secucard/secucard-connect-javascript-client-lib@feature-browser-sdk",
     "jquery": "github:components/jquery@2.1.1",
     "lodash": "npm:lodash@3.9.3",
     "secucore-sdk": "github:secucore/javascript-sdk",
@@ -29,7 +30,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.2.2"
+      "buffer": "npm:buffer@3.3.0"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -97,6 +98,10 @@ System.config({
     "github:jspm/nodelibs-zlib@0.1.0": {
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
+    "github:secucard/secucard-connect-javascript-client-lib@feature-browser-sdk": {
+      "lodash": "npm:lodash@3.9.3",
+      "superagent": "npm:superagent@1.2.0"
+    },
     "github:secucore/javascript-sdk": {
       "lodash": "npm:lodash@3.9.3",
       "superagent": "npm:superagent@1.2.0"
@@ -156,7 +161,7 @@ System.config({
       "readable-stream": "npm:readable-stream@1.0.27-1",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:buffer@3.2.2": {
+    "npm:buffer@3.3.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
