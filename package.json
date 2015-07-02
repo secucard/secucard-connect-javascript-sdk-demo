@@ -3,7 +3,8 @@
     "directories": {},
     "dependencies": {
       "javascript-sdk": "github:secucard/secucard-connect-javascript-client-lib@feature-browser-sdk",
-      "jquery": "github:components/jquery@^2.1.1"
+      "jquery": "github:components/jquery@^2.1.1",
+      "secucard/secucard-connect-javascript-client-lib": "github:secucard/secucard-connect-javascript-client-lib@feature-browser-sdk"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
@@ -19,11 +20,15 @@
     "gulp-changed": "^1.2.1",
     "gulp-jshint": "^1.11.0",
     "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.4.2",
     "gulp-sourcemaps": "^1.5.2",
+    "hapi": "^8.6.1",
     "jshint-stylish": "^2.0.1",
     "jspm": "^0.15.7",
     "object-assign": "^3.0.0",
     "object.assign": "^3.0.0",
+    "path": "^0.11.14",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.1",
     "vinyl-paths": "^1.0.0"

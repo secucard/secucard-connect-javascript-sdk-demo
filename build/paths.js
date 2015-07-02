@@ -2,15 +2,19 @@ var path = require('path');
 
 var appRoot = 'src/';
 var outputRoot = 'dist/';
-var local_packages = 'local_packages/'
-
+var nodeServer = outputRoot + "server/"
 module.exports = {
   root: appRoot,
-  index:'index.html',
-  source: appRoot + '**/*.js',
-  html: appRoot + '**/*.html',
-  style: 'styles/**/*.css',
+  bundle:"build.js",
+  node: {
+    server: {
+    src:appRoot + "server/**/*.js",
+    outputRoot: nodeServer
+    }
+  },
+  outputPublic:nodeServer + "public/",
   output: outputRoot,
-  secucard_sdk: local_packages + "javascript_sdk/",
-  sourceMapRelativePath: '../' + appRoot,
+  main: appRoot + 'app/main',
+  html: appRoot + 'app/**/*.html',
+  style: 'styles/**/*.css',
 };

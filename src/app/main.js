@@ -1,6 +1,6 @@
 
-import {SecucardConnect} from 'javascript-sdk';
+import {SecucardConnectBrowser} from 'javascript-sdk/browser';
 
-var secuCardConnect = new SecucardConnect()
+var secuCardConnectBrowser = new SecucardConnectBrowser()
 
-console.log(secuCardConnect)
+console.log(secuCardConnectBrowser)

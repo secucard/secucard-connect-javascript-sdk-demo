@@ -1,58 +1,54 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
-var plumber = require('gulp-plumber');
-var to5 = require('gulp-babel');
-var babel = require('gulp-babel');
-var sourcemaps = require('gulp-sourcemaps');
 var paths = require('../paths');
-var compilerOptions = require('../babel-options');
-var assign = Object.assign || require('object.assign');
+ var shell = require('gulp-shell');
+ var rename = require('gulp-rename')
+var nodemon = require('gulp-nodemon');
 
-// transpiles changed es6 files to SystemJS format
-// the plumber() call prevents 'pipe breaking' caused
-// by errors from other gulp plugins
-// https://www.npmjs.com/package/gulp-plumber
-gulp.task('build-system', function () {
-  return gulp.src(paths.source)
-    .pipe(plumber())
-    .pipe(changed(paths.output, {extension: '.js'}))
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
-    .pipe(sourcemaps.write({includeContent: false, sourceRoot: paths.sourceMapRelativePath }))
-    .pipe(gulp.dest(paths.output));
+gulp.task('build-system', shell.task([
+  'jspm bundle-sfx ' + paths.main,
+  'gulp copy-bundle'
+]))
+
+gulp.task('copy-bundle', function () {
+  return gulp.src(paths.bundle)
+    .pipe(rename("app.js"))
+    .pipe(gulp.dest(paths.outputPublic));
 });
+
 // copies changed html files to the output directory
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
-    .pipe(changed(paths.output, {extension: '.html'}))
-    .pipe(gulp.dest(paths.output));
-});
-
-gulp.task('babel', function() {
-  return gulp.src(paths.source)
-            .pipe(sourcemaps.init()) // (B)
-            .pipe(babel())
-            .pipe(sourcemaps.write('.', // (C)
-                      { sourceRoot: paths.root}))
-            .pipe(gulp.dest(paths.output));
+    .pipe(changed(paths.outputPublic, {extension: '.html'}))
+    .pipe(gulp.dest(paths.outputPublic));
 });
 
 
 // copies changed html files to the output directory
-gulp.task('copy-secucard-sdk', function () {
-  return gulp.src(paths.secucard_sdk + "**/*")
-    .pipe(gulp.dest(paths.output + "secucard_sdk"));
+gulp.task('build-node-server', function () {
+  return gulp.src(paths.node.server.src)
+    .pipe(gulp.dest(paths.node.server.outputRoot));
 });
 
-// this task calls the clean task (located
-// in ./clean.js), then runs the build-system
-// and build-html tasks in parallel
-// https://www.npmjs.com/package/gulp-run-sequence
+
+
+// copies changed html files to the output directory
+gulp.task('build-html', function () {
+  return gulp.src(paths.html)
+    .pipe(changed(paths.outputPublic, {extension: '.html'}))
+    .pipe(gulp.dest(paths.outputPublic));
+});
+
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html'],
+    ['build-system', 'build-html', 'build-node-server'],
+    'clean-after-build',
     callback
   );
+});
+
+gulp.task('node-serve', function() {
+  nodemon({ script : paths.node.server.outputRoot + 'index.js', ext : 'js' });
 });

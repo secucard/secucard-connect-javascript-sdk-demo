@@ -6,14 +6,8 @@ var browserSync = require('browser-sync');
 // at http://localhost:9000
 gulp.task('serve', ['build'], function(done) {
   browserSync({
-    open: false,
-    port: 9000,
-    server: {
-      baseDir: ['.'],
-      middleware: function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
-    }
-  }, done);
+    proxy: 'localhost:' + 9000,
+    files:['server/public/**/*.{js,css}']
+    }, 
+    done);
 });
