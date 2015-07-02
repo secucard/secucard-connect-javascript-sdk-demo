@@ -8,6 +8,14 @@ server.connection({ port : 9000 })
 
 server.route(routes);
 
-server.start(function() {
-  console.log('Running on 9000');
+server.register({register: require('./secucard-api')}, function (err) {
+    if (err) {
+        console.error('Failed to load Plugin.secucard_api:', err);
+    }
+    else {
+      server.start(function() {
+        console.log('Running on 9000');
+      });
+    }
 });
+
