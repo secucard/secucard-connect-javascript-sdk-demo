@@ -5,6 +5,13 @@ var paths = require('../paths');
  var shell = require('gulp-shell');
  var rename = require('gulp-rename')
 var nodemon = require('gulp-nodemon');
+var env = require('gulp-env');
+var secucardConfig = require('../../conf/secucard.json')
+gulp.task('set-env', function () {
+    env({
+       vars:{SECUCARD_CONFIG:JSON.stringify(secucardConfig)}
+    });
+});
 
 gulp.task('build-system', shell.task([
   'jspm bundle-sfx ' + paths.main,
@@ -42,6 +49,7 @@ gulp.task('build-html', function () {
 
 gulp.task('build', function(callback) {
   return runSequence(
+    'set-env',
     'clean',
     ['build-system', 'build-html', 'build-node-server'],
     'clean-after-build',

@@ -1,10 +1,10 @@
+var SecureCardConfig = JSON.parse(process.env.SECUCARD_CONFIG)
 var SecucardConnect = require('secucard-javascript-sdk').SecucardConnect
-
-var secucardConnect = new SecucardConnect()
+var secucardConnect = new SecucardConnect({auth:SecureCardConfig.auth})
 
 var routes = {}
 exports.register = function (server, options, next) {
-    server.route(routes);
+   server.route(routes);
     next();
 };
 
@@ -18,13 +18,18 @@ routes = [
     method: 'GET',
     path: '/api/authToken',
     handler: function(request, reply) {
+      var response = reply().hold()
+      var sendResponse = function(data) {
+        response.source = data
+        response.send()
+      }
       success = function(token) {
-        reply({ 'authToken' : token });
+        sendResponse({ 'authToken' : token });
       }
-      error = function(msg) {
-        reply({ error: true, details:msg});
+      error = function(response) {
+        sendResponse({ error: true, status:response.status, message:response.text});
       }
-      secucardConnect.auth.getToken().then(success, error)
+      secucardConnect.auth.getClientCredentials().then(success, error)
     }
 }
 ]
