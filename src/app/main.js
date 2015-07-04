@@ -1,6 +1,39 @@
-
+import $ from 'jquery'
 import {SecucardConnectBrowser} from 'javascript-sdk/browser';
+import {Action} from 'app/action'
+import {Result} from 'app/result'
+import {Events} from 'app/events'
 
-var secuCardConnectBrowser = new SecucardConnectBrowser()
+var onStartDemo = function() {
+  $('#start-demo').click(function(){
+    $(this).fadeOut()
+    $('#demo').fadeIn()
+   })
+}
+var wireUpAjaxLoader = function() {
+  $(document)
+  .ajaxStart(function(){
+      $("#ajax-spinner-modal").modal('show');
+  })
+  .ajaxStop(function(){
+      $("#ajax-spinner-modal").modal('hide');
+  });
+}
+export class Application {
+  constructor() {
+    this.browserSdk = new SecucardConnectBrowser()  
+  }
+  init() {
+    this.events = new Events()
+    new Action(this.events)
+    new Result(this.events)
+  }
+}
 
-console.log(secuCardConnectBrowser)
+$(() => {
+   var app = new Application();
+   app.init()
+   wireUpAjaxLoader()
+   onStartDemo()
+});
+

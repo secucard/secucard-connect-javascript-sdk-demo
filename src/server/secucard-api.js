@@ -17,6 +17,7 @@ routes = [
 { 
     method: 'GET',
     path: '/api/authToken',
+    //supports promises yay!
     handler: function(request, reply) {
       var response = reply().hold()
       var sendResponse = function(data) {
@@ -24,7 +25,8 @@ routes = [
         response.send()
       }
       success = function(token) {
-        sendResponse({ 'authToken' : token });
+        var token = JSON.parse(token)
+        sendResponse({ 'authToken' : token.access_token });
       }
       error = function(response) {
         sendResponse({ error: true, status:response.status, message:response.text});

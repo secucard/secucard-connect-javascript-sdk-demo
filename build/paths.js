@@ -12,8 +12,10 @@ module.exports = {
     outputRoot: nodeServer
     }
   },
+  assets:'assets/**/*',
   outputPublic:nodeServer + "public/",
   output: outputRoot,
+  source:appRoot + "**/*.js",
   main: appRoot + 'app/main',
   html: appRoot + 'app/**/*.html',
   style: 'styles/**/*.css',

@@ -2,10 +2,71 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>test</title>
+    <title>Secucard Javascript SDK Demo</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="app.css">
   </head>
   <body>
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Secucard Javascript SDK Demo</a>
+       </div>
+       <div>   
+          <ul class="nav navbar-nav pull-right">
+            <li>
+          <button id="start-demo" type="button" class="pull-right btn btn-lg btn-success">Start Demo</button>
+        </li>
+        </ul>
+        </div> 
+      </div>
+    </nav>
+
+    <div class="container">
+        <div id="ajax-spinner-modal" class="modal fade">
+          <div class="modal-dialog modal-log">
+            <div class="modal-content">
+              <div id="ajax-spinner-container" class="col-md-12 vertical-center">
+                  <img class="center-block" src="assets/images/ajax-loader.gif" id="ajax-spinner" title="working...">
+              </div>
+            </div>
+          </div>
+        </div>
+      <div id="demo" style="display:none">
+        <div class="text-center"><h2>Okay, here we go!</h2></div>
+        <div id="action">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <span>Take Some Action</span>
+         </div> 
+          <div class="panel-body">
+            <div id="client-credentials" class="screen">
+               <button data-action="get-client-credentials" type="button" class="btn btn-primary action">Get Client Credentials</button>
+            </div>
+          </div>
+        </div>
+        </div> 
+        <div id="result">
+        <div class="panel panel-default">
+           <div class="panel-heading">
+        <span>See The Result</span>
+      </div>
+        <div class="panel-body">
+          <div id="results-view"></div>
+        </div>
+        </div>
+        </div> 
+      </div>
+    </div><!-- /.container -->
     <script src="app.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
   </body>
 </html>
