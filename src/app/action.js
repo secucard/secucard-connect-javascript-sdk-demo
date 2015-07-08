@@ -2,7 +2,7 @@ import $ from 'jquery'
 import s from 'underscore.string'
 import {Net} from 'app/net'
 import {Urls} from 'app/urls'
-console.log(Urls.authToken)
+
 var initAction = function() {
   this.$el.find('.action').click( (event) => {
     var target = event.currentTarget
@@ -16,10 +16,14 @@ var initEvents = function() {
   var self = this
   var commands = self.events.commands
   commands.setHandler("getClientCredentials", () => {
-  Net.get(Urls.authToken, (credentials) => {
-    self.events.vent.trigger("got:client:credentials", credentials)  
+    Net.get(Urls.authToken, (credentials) => {
+      self.events.vent.trigger("got:client:credentials", credentials)  
+    })
   })
- })
+  commands.setHandler("showMakeStompCall", () => {
+    $('#client-credentials.screen').fadeOut()
+    $('#stomp.screen').fadeIn()
+  })
 }
 var action = (name) => {
   if (name) {

@@ -1,5 +1,4 @@
 import $ from 'jquery'
-import {SecucardConnectBrowser} from 'javascript-sdk/browser';
 import {Action} from 'app/action'
 import {Result} from 'app/result'
 import {Events} from 'app/events'
@@ -20,12 +19,17 @@ var wireUpAjaxLoader = function() {
       $("#ajax-spinner-modal").modal('hide');
   });
 }
+
+var initEvents = function() {
+  var self = this
+  self.events.vent.on("done:get:client:credentials", function(){
+    self.events.commands.execute("showMakeStompCall")
+  })
+}
 export class Application {
-  constructor() {
-    this.browserSdk = new SecucardConnectBrowser(Config)
-  }
   init() {
     this.events = new Events()
+    initEvents.call(this)
     new Action(this.events)
     new Result(this.events)
   }

@@ -25,7 +25,6 @@ routes = [
         response.send()
       }
       success = function(token) {
-        var token = JSON.parse(token)
         sendResponse({ 'authToken' : token.access_token });
       }
       error = function(response) {
