@@ -3,6 +3,7 @@ import {SecucardConnectBrowser} from 'javascript-sdk/browser';
 import {Action} from 'app/action'
 import {Result} from 'app/result'
 import {Events} from 'app/events'
+import {Config} from 'app/config'
 
 var onStartDemo = function() {
   $('#start-demo').click(function(){
@@ -21,7 +22,7 @@ var wireUpAjaxLoader = function() {
 }
 export class Application {
   constructor() {
-    this.browserSdk = new SecucardConnectBrowser()  
+    this.browserSdk = new SecucardConnectBrowser(Config)
   }
   init() {
     this.events = new Events()

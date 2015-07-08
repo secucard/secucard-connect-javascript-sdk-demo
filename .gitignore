@@ -5,3 +5,11 @@ dist
 config.js
 
 conf/secucard.json
+
+build.js.map
+
+*.map
+
+build.js
+
+build.js.map
