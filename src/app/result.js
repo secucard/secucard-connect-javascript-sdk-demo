@@ -12,11 +12,13 @@ var initEvents = function() {
     self.view.showStompCallView() 
   })  
   self.events.vent.on("results:update:stomp:call:view", function(event, message) {
-    var model = {response:"", status:{error:false, message:message}}
+    var model = {response:"", debug:"", status:{error:false, message:message}}
     if (event == "message") {
       model.response = message
     } else if(event == "error") {
       model.status.error = true
+    } else if (event == "debug") {
+      model.debug = message
     }
     self.view.updateStompCallView(model) 
   })  

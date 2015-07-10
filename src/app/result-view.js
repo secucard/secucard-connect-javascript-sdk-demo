@@ -38,6 +38,17 @@ class StompCallViewResponse extends SubView {
    }
 }
 
+class StompCallViewDebug extends SubView {
+   initialize (options) {
+      this.model = options.model
+      this.template = `<% if (debug) { %>
+                  <div class="alert alert-info">
+                      <%= debug %>
+                   </div>
+                  <% } %>  `
+   }
+}
+
 class StompCallView extends SubView {
    initialize (options) {
       this.model = {response:"", status:{}}
@@ -67,13 +78,18 @@ export class ResultView extends BaseView {
       var stompCallView = new StompCallView()
       this.model.screen = stompCallView.view()
       this.render()
+      $('#results-view .panel-body').css('height', "200px")
     }
     updateStompCallView(model) {
       var view, target, options = {el:this.el, model:model};
       if (model.response) {
         view = new StompCallViewResponse(options).view()
         target = this.$el.find('#response')
-      }else {
+      } else if (model.debug) {
+         view = new StompCallViewDebug(options).view()
+        target = this.$el.find('#debug')
+      }
+      else {
         view = new StompCallViewStatus(options).view()
         target = this.$el.find('#status')
       }
