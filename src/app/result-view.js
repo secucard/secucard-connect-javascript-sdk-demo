@@ -33,7 +33,9 @@ class StompCallViewResponse extends SubView {
    initialize (options) {
       this.model = options.model
       this.template = `<% if (response) { %>
-                   <%= response %>
+                   <div class="alert alert-success">
+                      <%= response %>
+                   </div>
                   <% } %>  `
    }
 }
@@ -93,6 +95,6 @@ export class ResultView extends BaseView {
         view = new StompCallViewStatus(options).view()
         target = this.$el.find('#status')
       }
-      $(target).prepend(view)
+      $(target).prepend(view).scrollTop(0)
     }
 }
