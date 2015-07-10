@@ -4,4 +4,5 @@ var api = (path) => {
 }
 export class Urls {
     static authToken = api("authToken")
+    static uuid = api("uuid")
 }

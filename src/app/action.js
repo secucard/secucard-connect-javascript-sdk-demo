@@ -1,41 +1,48 @@
 import $ from 'jquery'
-import s from 'underscore.string'
 import {Net} from 'app/net'
 import {Urls} from 'app/urls'
+import {ActionView} from 'app/action-view'
+import {Util} from 'app/util'
 
-var initAction = function() {
-  this.$el.find('.action').click( (event) => {
-    var target = event.currentTarget
-    var _action = action($(target).data('action'))
-    if (_action) {
-      this.events.commands.execute(_action)
-    }
-  })
-}
 var initEvents = function() {
   var self = this
+  
   var commands = self.events.commands
+  
   commands.setHandler("getClientCredentials", () => {
-    Net.get(Urls.authToken, (credentials) => {
-      self.events.vent.trigger("got:client:credentials", credentials)  
+    Net.get(Urls.authToken).done( (response) => {
+      if (response.error) {
+        self.events.vent.trigger("action:error:get:client:credentials", response)
+      }  else {
+        self.events.vent.trigger("action:got:client:credentials", response)
+      }
     })
   })
+  
+  self.events.reqres.setHandler("stomp-call-type", function(){
+    return $('#stomp-call-type').val();
+  })
+
+  self.events.vent.on("action:start", function(done){
+    self.view.showGetCredentialsView()
+    done()
+  })
+  
+  self.events.vent.on("results:done:get:client:credentials", function(){
+    Util.disable($('#client-credentials .main button'))
+    $('#client-credentials .action').fadeIn()
+  })
+  
   commands.setHandler("showMakeStompCall", () => {
-    $('#client-credentials.screen').fadeOut()
-    $('#stomp.screen').fadeIn()
+    self.view.showMakeStompCallView()
+    self.events.vent.trigger("results:show:make:stomp:call:view")
   })
 }
-var action = (name) => {
-  if (name) {
-    return s(name).camelize().value()
-  }
-}
+
 export class Action {
-  constructor(events, el="#action") {
+  constructor(events) {
     this.events = events
-    this.el = el
-    this.$el = $(this.el)
-    initAction.call(this)
+    this.view = new ActionView({el:"#action-view", events:events})
     initEvents.call(this)
   }
 }

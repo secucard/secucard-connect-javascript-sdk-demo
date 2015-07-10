@@ -19,6 +19,10 @@ body {
     background-color: black;
 }
 
+#results-view .panel-body {
+  max-height:200px;
+  overflow:scroll;
+}
 #demo {
  padding: 40px 15px;
 }

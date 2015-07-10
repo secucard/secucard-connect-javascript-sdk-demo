@@ -1,6 +1,7 @@
 var SecureCardConfig = JSON.parse(process.env.SECUCARD_CONFIG)
 var SecucardConnect = require('secucard-javascript-sdk').SecucardConnect
 var secucardConnect = new SecucardConnect({auth:SecureCardConfig.auth})
+var uuid = require('node-uuid')
 
 var routes = {}
 exports.register = function (server, options, next) {
@@ -28,9 +29,18 @@ routes = [
         sendResponse({ 'authToken' : token.access_token });
       }
       error = function(response) {
-        sendResponse({ error: true, status:response.status, message:response.text});
+        sendResponse({ error: true, resource:response.request.url, status:response.res.statusCode, message:response.error.toString().split(':')[1]});
       }
       secucardConnect.auth.getClientCredentials().then(success, error)
     }
-}
+}, 
+{ 
+    method: 'GET',
+    //returns uuid -- time based
+    path: '/api/uuid',
+    handler: function(request, reply) {
+      reply({uuid:uuid.v1()}) 
+    }
+}, 
+
 ]

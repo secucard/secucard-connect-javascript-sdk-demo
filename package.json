@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "hapi": "^8.x.x",
+    "node-uuid": "^1.4.3",
     "secucard-javascript-sdk": "secucard/secucard-connect-javascript-client-lib#feature-browser-sdk"
   }
 }
