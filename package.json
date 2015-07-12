@@ -41,8 +41,9 @@
     "vinyl-paths": "^1.0.0"
   },
   "dependencies": {
+    "es6-shim": "^0.32.2",
     "hapi": "^8.x.x",
     "node-uuid": "^1.4.3",
-    "secucard-javascript-sdk": "secucard/secucard-connect-javascript-client-lib#feature-browser-sdk"
+    "secucard-connect": "git+https://github.com/secucard/secucard-connect-javascript-client-lib#develop-merge-browser-sdk"
   }
 }
