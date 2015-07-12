@@ -1,12 +1,14 @@
-import $ from 'jquery'
-import {Action} from 'app/action'
-import {Result} from 'app/result'
-import {Events} from 'app/events'
-import {Config} from 'app/config'
-import {SecucardConnectBrowser} from 'javascript-sdk/browser'
-import {Uuid} from 'app/uuid'
-import {Net} from 'app/net'
-import {Urls} from 'app/urls'
+import $ from 'jquery';
+import {Action} from './action';
+import {Result} from './result';
+import {Events} from './events';
+//import {Config} from './config';
+import {SecucardConnect} from 'secucard-connect';
+import {Uuid} from './uuid';
+import {Net} from './net';
+import {Urls} from './urls';
+
+console.log(SecucardConnect);
 
 var onStartDemo = function() {
   var self = this
@@ -57,7 +59,7 @@ var initEvents = function() {
 export class Application {
   init() {
     this.events = new Events()
-    initEvents.call(this)
+    //initEvents.call(this)
     new Action(this.events)
     new Result(this.events)
     return Net.get(Urls.uuid)

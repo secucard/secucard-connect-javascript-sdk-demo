@@ -1,4 +1,4 @@
-import {ResultView} from 'app/result-view'
+import {ResultView} from './result-view'
 var initEvents = function() {
   self = this
   self.events.vent.on("action:error:get:client:credentials", function(response) {

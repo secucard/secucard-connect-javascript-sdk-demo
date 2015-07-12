@@ -1,5 +1,12 @@
-//var SecureCardConfig = JSON.parse(process.env.SECUCARD_CONFIG);
-var credentials = require('./dev-credentials.json');
+var SecureCardConfig;
+
+if(process.env.SECUCARD_CONFIG){
+	SecureCardConfig = JSON.parse(process.env.SECUCARD_CONFIG);
+} else {
+	SecureCardConfig = require('../../conf/secucard.json');
+}
+
+var credentials = SecureCardConfig['dev-credentials'];
 
 var SecucardClient = require('secucard-connect').SecucardConnect.create();
 SecucardClient.setCredentials(credentials);

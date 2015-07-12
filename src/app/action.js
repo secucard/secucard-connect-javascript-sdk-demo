@@ -1,8 +1,8 @@
 import $ from 'jquery'
-import {Net} from 'app/net'
-import {Urls} from 'app/urls'
-import {ActionView} from 'app/action-view'
-import {Util} from 'app/util'
+import {Net} from './net'
+import {Urls} from './urls'
+import {ActionView} from './action-view'
+import {Util} from './util'
 
 var initEvents = function() {
   var self = this
