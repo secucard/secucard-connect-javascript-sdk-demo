@@ -4,8 +4,6 @@ node_modules
 dist
 config.js
 
-conf/secucard.json
-
 build.js.map
 
 *.map
