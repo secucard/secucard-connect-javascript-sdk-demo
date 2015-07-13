@@ -1,0 +1,7 @@
+{
+    "auth": {
+      "host_auth": "AUTH HOST URL",
+      "client_id" : "CLIENT_ID", 
+      "client_secret" : "CLIENT_SECRET"
+    }
+}
