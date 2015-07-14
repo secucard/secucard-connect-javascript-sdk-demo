@@ -5,8 +5,8 @@ var initEvents = function() {
     self.view.showError(response) 
   })  
   self.events.vent.on("action:got:client:credentials", function(token) {
-    self.view.showAccessToken(token.authToken) 
-    self.events.vent.trigger('results:done:get:client:credentials', token.authToken)
+    self.view.showAccessToken(token.access_token);
+    self.events.vent.trigger('results:done:get:client:credentials', token)
   })  
   self.events.vent.on("results:show:make:stomp:call:view", function(token) {
     self.view.showStompCallView() 

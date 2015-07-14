@@ -8,7 +8,11 @@ if(process.env.SECUCARD_CONFIG){
 
 var credentials = SecureCardConfig['dev-credentials'];
 
-var SecucardClient = require('secucard-connect').SecucardConnect.create();
+var config = {
+	oAuthUrl: 'https://connect-dev10.secupay-ag.de/oauth/'
+};
+
+var SecucardClient = require('secucard-connect').SecucardConnect.create(config);
 SecucardClient.setCredentials(credentials);
 
 var uuid = require('node-uuid');
@@ -40,7 +44,7 @@ routes = [
 			};
 			
 			success = function (token) {
-				sendResponse({'authToken': token.access_token});
+				sendResponse(token);
 			};
 			error = function (response) {
 				sendResponse({
