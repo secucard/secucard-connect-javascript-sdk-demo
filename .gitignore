@@ -1,11 +1,8 @@
-jspm_packages
-node_modules
 *.log
-dist
 build.js.map
 
 *.map
-
+jspm-backbone-demo/dist
+jspm-backbone-demo/jspm_packages
+jspm-backbone-demo/node_modules
 build.js
-
-build.js.map
