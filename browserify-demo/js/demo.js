@@ -1,14 +1,16 @@
 var SecucardConnect = secucardConnect.SecucardConnect;
 var SecucardServices = secucardConnect.Services;
 
+/*
 var config = {
 	restUrl: 'https://connect-dev10.secupay-ag.de/api/v2/',
 	oAuthUrl: 'https://connect-dev10.secupay-ag.de/oauth/',
 	stompHost: 'connect-dev10.secupay-ag.de',
 	stompEnabled: true
 };
+*/
 
-var client = SecucardConnect.create(config);
+var client = SecucardConnect.create();
 var smartTransactions = client.getService(SecucardServices.Smart.Transactions);
 
 var demo = {
