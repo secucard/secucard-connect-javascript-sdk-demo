@@ -134,7 +134,7 @@ var demo = {
 	
 	onCreateTransaction: function (res) {
 		console.log(res);
-		this.$transactionResult.empty();
+		this.$transactionCreateResult.empty();
 		this.$transactionCreateResult.append('<span class="text-success">' + res.id +'</span>');
 	},
 	
