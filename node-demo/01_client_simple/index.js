@@ -11,19 +11,9 @@ var credentials = {
 var client = SecucardConnect.create();
 client.setCredentials(credentials);
 
-// get Loyalty/Cards service
-var cards = client.getService(Services.Loyalty.Cards);
-
 // establish connection
 client.open().then(function(){
-
-    // use secucard client to get available loyalty/cards list
-    cards.retrieveList().then(function(res){
-        console.log(res);
-    }).catch(function(err){
-        console.log(err);
-    });
-
+    console.log("Secucard client connected");
 }).catch(function(err){
 	console.log(err);
 });
