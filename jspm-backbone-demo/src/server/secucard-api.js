@@ -8,12 +8,36 @@ if(process.env.SECUCARD_CONFIG){
 
 var credentials = SecureCardConfig['dev-credentials'];
 
-var config = {
-	oAuthUrl: 'https://connect-dev10.secupay-ag.de/oauth/'
+function TokenStorageMixin() {
+	
+}
+
+TokenStorageMixin.prototype.storeToken = function (token) {
+	console.log('TokenStorageMixin.storeToken', JSON.stringify(token));
+	this.token = JSON.stringify(token);
+	return Promise.resolve(this.token);
 };
 
-var SecucardClient = require('secucard-connect').SecucardConnect.create(config);
-SecucardClient.setCredentials(credentials);
+TokenStorageMixin.prototype.removeToken = function () {
+	console.log('TokenStorageMixin.removeToken');
+	this.token = null;
+	return Promise.resolve(this.token);
+};
+
+TokenStorageMixin.prototype.getStoredToken = function () {
+	console.log('TokenStorageMixin.getStoredToken', this.token);
+	return Promise.resolve(JSON.parse(this.token));
+};
+
+var client = require('secucard-connect').SecucardConnect.create();
+client.setCredentials(credentials, TokenStorageMixin).then();
+client.open().then(function () {
+	
+	client.getStoredToken().then(function (token) {
+		console.log('Stored token', token);
+	});
+	
+});
 
 var uuid = require('node-uuid');
 
@@ -55,8 +79,7 @@ routes = [
 				});
 			};
 			
-			SecucardClient.connect().then(success, error);
-			
+			client.getStoredToken().then(success);
 		}
 	},
 	{

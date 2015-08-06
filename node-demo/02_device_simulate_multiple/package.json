@@ -6,11 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "secucard-connect": "^0.1.1",
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
-    "secucard-connect": "git+https://github.com/secucard/secucard-connect-javascript-client-lib#develop",
+    "secucard-connect": "^0.1.1",
     "hapi": "^8.8.1"
   }
 }

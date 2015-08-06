@@ -23,14 +23,14 @@ System.config({
     "core-js": "npm:core-js@0.9.18",
     "inherits": "npm:inherits@2.0.1",
     "jquery": "github:components/jquery@2.1.4",
-    "secucard-connect": "github:secucard/secucard-connect-javascript-client-lib@develop",
+    "secucard-connect": "github:secucard/secucard-connect-javascript-sdk@develop",
     "underscore": "npm:underscore@1.8.3",
     "underscore.string": "npm:underscore.string@3.1.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.3.1"
+      "buffer": "npm:buffer@3.4.0"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -98,23 +98,16 @@ System.config({
     "github:jspm/nodelibs-zlib@0.1.0": {
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
-    "github:secucard/secucard-connect-javascript-client-lib@develop": {
+    "github:secucard/secucard-connect-javascript-sdk@develop": {
       "es6-shim": "npm:es6-shim@0.32.2",
       "eventemitter3": "npm:eventemitter3@1.1.1",
-      "lodash": "npm:lodash@3.10.0",
+      "lodash": "npm:lodash@3.10.1",
+      "minilog": "npm:minilog@2.0.8",
       "qs": "npm:qs@4.0.0",
-      "superagent": "npm:superagent@1.2.0",
+      "superagent": "npm:superagent@1.3.0",
       "uuid": "npm:uuid@2.0.1"
     },
-    "github:secucard/secucard-connect-javascript-client-lib@develop-merge-browser-sdk": {
-      "es6-shim": "npm:es6-shim@0.32.2",
-      "eventemitter3": "npm:eventemitter3@1.1.1",
-      "lodash": "npm:lodash@3.10.0",
-      "qs": "npm:qs@4.0.0",
-      "superagent": "npm:superagent@1.2.0",
-      "uuid": "npm:uuid@2.0.1"
-    },
-    "npm:asn1.js@2.1.2": {
+    "npm:asn1.js@2.1.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "bn.js": "npm:bn.js@2.2.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -141,8 +134,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "underscore": "npm:underscore@1.8.3"
     },
-    "npm:browserify-aes@1.0.1": {
+    "npm:browserify-aes@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "buffer-xor": "npm:buffer-xor@1.0.2",
       "create-hash": "npm:create-hash@1.1.1",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -178,7 +172,11 @@ System.config({
       "readable-stream": "npm:readable-stream@1.0.27-1",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:buffer@3.3.1": {
+    "npm:buffer-xor@1.0.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:buffer@3.4.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
@@ -223,7 +221,7 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
     "npm:crypto-browserify@3.9.14": {
-      "browserify-aes": "npm:browserify-aes@1.0.1",
+      "browserify-aes": "npm:browserify-aes@1.0.2",
       "browserify-sign": "npm:browserify-sign@3.0.2",
       "create-ecdh": "npm:create-ecdh@2.0.1",
       "create-hash": "npm:create-hash@1.1.1",
@@ -250,7 +248,7 @@ System.config({
       "bn.js": "npm:bn.js@2.2.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "miller-rabin": "npm:miller-rabin@2.0.1",
+      "miller-rabin": "npm:miller-rabin@2.1.0",
       "randombytes": "npm:randombytes@2.0.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
@@ -301,14 +299,14 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:lodash@3.10.0": {
+    "npm:lodash@3.10.1": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:methods@1.0.1": {
       "http": "github:jspm/nodelibs-http@1.7.1"
     },
-    "npm:miller-rabin@2.0.1": {
-      "bn.js": "npm:bn.js@2.2.0",
+    "npm:miller-rabin@2.1.0": {
+      "bn.js": "npm:bn.js@3.1.1",
       "brorand": "npm:brorand@1.0.5"
     },
     "npm:mime-db@1.12.0": {
@@ -324,6 +322,13 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
+    "npm:minilog@2.0.8": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "microee": "npm:microee@0.0.2",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
@@ -332,8 +337,8 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:parse-asn1@3.0.1": {
-      "asn1.js": "npm:asn1.js@2.1.2",
-      "browserify-aes": "npm:browserify-aes@1.0.1",
+      "asn1.js": "npm:asn1.js@2.1.3",
+      "browserify-aes": "npm:browserify-aes@1.0.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.1",
       "pbkdf2": "npm:pbkdf2@3.0.4",
@@ -399,7 +404,7 @@ System.config({
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
-    "npm:superagent@1.2.0": {
+    "npm:superagent@1.3.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "component-emitter": "npm:component-emitter@1.1.2",
       "cookiejar": "npm:cookiejar@2.0.1",
