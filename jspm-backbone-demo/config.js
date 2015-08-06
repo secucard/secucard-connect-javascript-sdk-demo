@@ -23,7 +23,7 @@ System.config({
     "core-js": "npm:core-js@0.9.18",
     "inherits": "npm:inherits@2.0.1",
     "jquery": "github:components/jquery@2.1.4",
-    "secucard-connect": "github:secucard/secucard-connect-javascript-sdk@develop",
+    "secucard-connect": "github:secucard/secucard-connect-javascript-sdk@0.1.2",
     "underscore": "npm:underscore@1.8.3",
     "underscore.string": "npm:underscore.string@3.1.1",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -98,7 +98,7 @@ System.config({
     "github:jspm/nodelibs-zlib@0.1.0": {
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
-    "github:secucard/secucard-connect-javascript-sdk@develop": {
+    "github:secucard/secucard-connect-javascript-sdk@0.1.2": {
       "es6-shim": "npm:es6-shim@0.32.2",
       "eventemitter3": "npm:eventemitter3@1.1.1",
       "lodash": "npm:lodash@3.10.1",

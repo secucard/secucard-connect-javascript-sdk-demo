@@ -1,6 +1,6 @@
 # secucard connect Javascript SDK jspm demo
 
-## Installing
+## Installing demo
 
 ```
 npm install
