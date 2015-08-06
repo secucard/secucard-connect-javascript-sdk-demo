@@ -1,0 +1,37 @@
+body {
+    padding-top: 50px;
+}
+
+.navbar-inverse {
+    background-color: #3276b1;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+#ajax-spinner-modal .modal-dialog {
+    margin-top: 13%;
+}
+
+#start-demo {
+    position: relative;
+    top: 3px;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    background-color: black;
+}
+
+#results-view .panel-body {
+    max-height: 200px;
+    overflow: scroll;
+}
+
+#connect {
+    padding: 10px 10px;
+}
+
+#transaction {
+    padding: 0px 10px;
+}

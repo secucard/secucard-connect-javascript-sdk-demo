@@ -6,7 +6,7 @@ var paths = require('../paths');
  var rename = require('gulp-rename')
 var nodemon = require('gulp-nodemon');
 var env = require('gulp-env');
-var secucardConfig = require('../../conf/secucard.json')
+var secucardConfig = require('../../conf/secucard.json');
 
 gulp.task('set-env', function () {
     env({

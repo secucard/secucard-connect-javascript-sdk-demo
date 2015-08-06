@@ -1,4 +1,4 @@
-import {BaseView, SubView} from 'app/view'
+import {BaseView, SubView} from './view'
 
 class AccessTokenView extends SubView {
    initialize (options) {

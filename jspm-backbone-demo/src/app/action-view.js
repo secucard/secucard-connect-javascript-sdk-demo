@@ -1,6 +1,6 @@
-import {BaseView, SubView} from 'app/view'
+import {BaseView, SubView} from './view'
 import s from 'underscore.string'
-import {Util} from 'app/util'
+import {Util} from './util'
 
 var wireUpActions = function() {
   var self = this

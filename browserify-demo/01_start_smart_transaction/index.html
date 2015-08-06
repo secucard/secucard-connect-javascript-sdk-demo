@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Secucard Javascript SDK Demo</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/demo.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">secucard Javascript SDK Demo</a>
+		</div>
+		<!--<div>
+			<ul class="nav navbar-nav pull-right">
+				<li>
+					<button id="start-demo" type="button" class="pull-right btn btn-lg btn-success">Start Demo</button>
+				</li>
+			</ul>
+		</div>-->
+	</div>
+</nav>
+<div class="container">
+	<div id="ajax-spinner-modal" class="modal fade">
+		<div class="modal-dialog modal-log">
+			<div class="modal-content">
+				<div id="ajax-spinner-container" class="col-md-12 vertical-center">
+					<img class="center-block" src="assets/images/ajax-loader.gif" id="ajax-spinner" title="working...">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="connect">
+		<div class="action">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span>Connect with access_token</span>
+				</div>
+				<div class="panel-body">
+					<input type="text" class="form-control" id="accessToken" placeholder="access_token">
+					<div class="error" style="display: none">
+						
+					</div>
+				</div>
+				<div class="panel-footer">
+					<button type="button" class="action-start btn btn-success">Connect</button>
+				</div>
+			</div>
+		</div>
+		<div class="result" style="display: none">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="results-view">
+						<span class="text-success">Successfully connected</span>
+					</div>
+				</div>
+				<!--<div class="panel-footer">
+					<button id="action-finish" type="button" class="btn btn-warning">Disconnect</button>
+				</div>-->
+			</div>
+		</div>
+	</div>
+	<div id="transactionCreate" style="display: none">
+		<div class="action">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span>Create transaction</span>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<textarea rows="3" class="form-control" id="transactionJson" placeholder="transaction JSON"></textarea>
+					</div>
+					
+					<div class="results-view panel panel-default">
+						<div class="panel-heading">
+							Results:
+						</div>
+						<div class="panel-body">
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="panel-footer">
+					<button type="button" class="action-start btn btn-success">Create</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="transaction" style="display: none">
+		<div class="action">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span>Start transaction</span>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<input type="text" class="form-control" id="transactionId" placeholder="transaction ID">
+					</div>
+					<div class="form-group">
+						<select class="form-control" id="transactionType">
+							<option value="demo">demo</option>
+						</select>
+					</div>
+					
+					<div class="results-view panel panel-default">
+						<div class="panel-heading">
+							Results:
+						</div>
+						<div class="panel-body">
+							
+						</div>
+					</div>
+					
+					<div class="events-view panel panel-default">
+						<div class="panel-heading">
+							Events:
+						</div>
+						<div class="panel-body">
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="panel-footer">
+					<button type="button" class="action-start btn btn-success">Start</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="assets/js/jquery-2.1.4.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="http://cdn.secucard.com/am/connect-browser/0.1.x/secucard-connect.min.js"></script>
+<!--<script src="secucard-connect.js"></script>-->
+<script src="js/demo.js"></script>
+</body>
+</html>

@@ -1,15 +1,12 @@
-jspm_packages
-node_modules
 *.log
-dist
-config.js
-
-conf/secucard.json
-
 build.js.map
 
 *.map
-
+jspm-backbone-demo/dist
+jspm-backbone-demo/jspm_packages
+jspm-backbone-demo/node_modules
 build.js
-
-build.js.map
+secucard-connect.js
+node-demo/node_modules
+node-demo/01_client_simple/node_modules
+node-demo/02_device_simulate_multiple/node_modules
