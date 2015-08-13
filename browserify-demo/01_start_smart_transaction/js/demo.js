@@ -1,5 +1,8 @@
 var SecucardConnect = secucardConnect.SecucardConnect;
 var SecucardServices = secucardConnect.Services;
+var minilog = secucardConnect.MiniLog;
+minilog.suggest.clear();
+minilog.enable();
 
 /*
 var config = {
