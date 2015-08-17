@@ -62,7 +62,8 @@ var demo = {
 		
 		this.$transactionResult = this.$transactionEl.find('.results-view .panel-body');
 		this.$transactionEvents = this.$transactionEl.find('.events-view .panel-body');
-		
+		this.$transactionReciept = this.$transactionEl.find('.reciept-view .panel-body');
+        
 		smartTransactions.on('display', (function (data) {
 			
 			console.log('Display event', data);
@@ -167,6 +168,8 @@ var demo = {
 		console.log('Transaction started', res);
 		this.$transactionResult.empty();
 		this.$transactionResult.append('<span class="text-success">' + JSON.stringify(res) +'</span>');
+        this.$transactionReciept.empty();
+        this.$transactionReciept.append(this.renderReciept(res.receipt));
 	},
 	
 	onStartTransactionError: function (err) {
@@ -179,7 +182,32 @@ var demo = {
 		smartTransactions.start(transactionId, type)
 			.then(this.onStartTransaction.bind(this))
 			.catch(this.onStartTransactionError.bind(this));
-	}
+	},
+    
+    renderReciept: function (receipt) {
+        
+        console.log('renderReciept', receipt);
+        return receipt.map(function (item) {
+            
+            var cl = ["row"];
+            cl.push(item.type);
+            var txt;
+            if(item.type == 'separator') {
+                txt = '<h1>' + item.value.caption + '</h1>';
+            } else if(item.type == 'textline') {
+                txt = item.value.text;
+                cl = cl.concat(item.value.decoration);
+            } else if(item.type == 'name-value') {
+                txt = '<div class="name col-md-6">' + item.value.name + ':</div>' + '<div class="value col-md-6">' + item.value.value + '</div>';
+                cl = cl.concat(item.value.decoration);
+            } else if(item.type == 'space') {
+                txt = '&nbsp;';
+            }
+            
+            return '<div class="'+ cl.join(" ") +'">' + (txt != undefined? txt : '') + '</div>' + (item.type == 'separator'? '<hr/>' : '');
+            
+        }).join('');
+    }
 
 };
 
