@@ -97,12 +97,11 @@ var demo = {
 		var credentials = {
 			token: {
 				access_token: token,
-				expires_in: 1200,
-				token_type: 'bearer',
-				scope: 'https://scope.secucard.com/e/api'
+                expireTime: 1200 * 1000 + (new Date()).getTime()
 			}
 		};
-
+        
+        console.log(credentials);
 		client.setCredentials(credentials);
 		return client.open().then(this.onOpened.bind(this)).catch(this.onConnectionError.bind(this));
 

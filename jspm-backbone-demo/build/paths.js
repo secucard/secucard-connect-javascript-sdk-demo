@@ -5,7 +5,7 @@ var outputRoot = 'dist/';
 var nodeServer = outputRoot + "server/"
 module.exports = {
   root: appRoot,
-  bundle:"build.js",
+  bundle:"bundle/build.js",
   node: {
     server: {
     src:appRoot + "server/**/*.js",
@@ -18,5 +18,5 @@ module.exports = {
   source:appRoot + "**/*.js",
   main: appRoot + 'app/main',
   html: appRoot + 'app/**/*.html',
-  style: 'styles/**/*.css',
+  style: 'styles/**/*.css'
 };

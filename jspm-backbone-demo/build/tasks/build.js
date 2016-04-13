@@ -15,13 +15,13 @@ gulp.task('set-env', function () {
 });
 
 gulp.task('build-system', shell.task([
-  'jspm bundle-sfx ' + paths.main,
+  'jspm bundle-sfx ' + paths.main + ' ' + paths.bundle,
   'gulp copy-bundle'
-]))
+]));
 
 gulp.task('copy-bundle', function () {
   return gulp.src(paths.bundle)
-    .pipe(rename("app.js"))
+    .pipe(rename("bundle.js"))
     .pipe(gulp.dest(paths.outputPublic));
 });
 gulp.task('copy-styles', function () {
