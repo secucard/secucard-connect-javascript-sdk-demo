@@ -3,8 +3,8 @@ var Services = require('secucard-connect').Services;
 
 // set credentials
 var credentials = {
-  'client_id': '09ae83af7c37121b2de929b211bad944',
-  'client_secret': '9c5f250b69f6436cb38fd780349bc00810d8d5051d3dcf821e428f65a32724bd',
+  'client_id': 'YOUR_CLIENT_ID',
+  'client_secret': 'YOUR_CLIENT_SECRET'
 };
 
 var config = {
@@ -39,7 +39,7 @@ server.route({
   path: '/hello',
   handler: function(request, reply) {
     reply('hello world');
-  },
+  }
 });
 
 server.route({
@@ -54,6 +54,60 @@ server.route({
     };
 
     customers.retrieveList(queryParams).then(function(res){
+      reply(res);
+    }).catch(function(err){
+      console.log(err);
+    });
+  }
+});
+
+server.route({
+  method: 'GET',
+  path: '/create_customer',
+  handler: function(request, reply) {
+    var customers = client.getService(Services.Payment.Customers);
+
+    var data = {
+      contact : {
+        name: 'Max Müster',
+        forename: 'Max',
+        surname: 'Müster',
+        email: 'max@example.com',
+        dob: '1985-01-12',
+        address: {
+          street: 'Lange-Straße',
+          street_number: '123b',
+          postal_code: '01234',
+          city: 'Münster',
+          country : 'DE'
+        },
+        phone: '0158743243787'
+      }
+    };
+
+    customers.create(data).then(function(res){
+      reply(res);
+    }).catch(function(err){
+      console.log(err);
+    });
+  }
+});
+
+server.route({
+  method: 'GET',
+  path: '/create_prepay_payment',
+  handler: function(request, reply) {
+    var custumerId = 'PCU_MP7HFRJHD2MARY5YNY8KYZ0K8MHBA7';
+    var prepays = client.getService(Services.Payment.SecupayPrepays);
+
+    var data = {
+      customer: custumerId,
+      amount: 100,
+      currency: 'EUR',
+      purpose: 'Test order'
+    };
+
+    prepays.create(data).then(function(res){
       reply(res);
     }).catch(function(err){
       console.log(err);
