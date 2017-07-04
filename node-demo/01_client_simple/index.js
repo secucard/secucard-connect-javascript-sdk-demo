@@ -3,12 +3,19 @@ var Services = require('secucard-connect').Services;
 
 // set credentials
 var credentials = {
-    "client_id": "your_client_id",
-    "client_secret": "your_client_secret"
+    "client_id": "09ae83af7c37121b2de929b211bad944",
+    "client_secret": "9c5f250b69f6436cb38fd780349bc00810d8d5051d3dcf821e428f65a32724bd"
+};
+
+var config = {
+  restUrl: 'https://connect-testing.secupay-ag.de/api/v2/',
+  oAuthUrl: 'https://connect-testing.secupay-ag.de/oauth/',
+  stompHost: 'connect-testing.secupay-ag.de',
+  stompEnabled: true
 };
 
 // create Secucard client
-var client = SecucardConnect.create();
+var client = SecucardConnect.create(config);
 client.setCredentials(credentials);
 
 // establish connection
