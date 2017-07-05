@@ -97,7 +97,7 @@ server.route({
   method: 'GET',
   path: '/create_prepay_payment',
   handler: function(request, reply) {
-    var custumerId = 'PCU_MP7HFRJHD2MARY5YNY8KYZ0K8MHBA7';
+    var custumerId = 'PCU_CP45TYJ232MASNBD875XUE5FNM8UA6';
     var prepays = client.getService(Services.Payment.SecupayPrepays);
 
     var data = {
