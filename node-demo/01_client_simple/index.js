@@ -115,6 +115,25 @@ server.route({
   }
 });
 
+server.route({
+    method: 'GET',
+    path: '/validate_iban',
+    handler: function(request, reply) {
+        var data = {
+            iban:'DE31795625140002122251',
+            owner: 'Jon Doe'
+        };
+
+        var pcs = client.getService(Services.Loyalty.PaymentContainers);
+
+        pcs.validateIban(data).then(function(res){
+            reply(res);
+        }).catch(function(err){
+            console.log(err);
+        });
+    }
+});
+
 server.start(function() {
   console.log('Running on 9000');
 });
