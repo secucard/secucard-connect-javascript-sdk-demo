@@ -1,12 +1,1 @@
-*.log
-build.js.map
-
-*.map
-jspm-backbone-demo/dist
-jspm-backbone-demo/jspm_packages
-jspm-backbone-demo/node_modules
-build.js
-secucard-connect.js
-node-demo/node_modules
-node-demo/01_client_simple/node_modules
-node-demo/02_device_simulate_multiple/node_modules
+node-demo/01_client_simple/node_modules/

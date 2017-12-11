@@ -1,12 +1,12 @@
 {
-  "name": "node-demo",
+  "name": "secuconnect javascript sdk demo",
   "version": "0.0.1",
-  "description": "",
+  "description": "Exemplary implementation of the secuconnect javascript sdk",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "secuconnect KG",
   "license": "Apache-2.0",
   "dependencies": {
     "secucard-connect": "github:secucard/secucard-connect-javascript-sdk#develop",

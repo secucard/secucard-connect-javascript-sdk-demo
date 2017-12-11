@@ -11,7 +11,7 @@ var config = {
   restUrl: 'https://connect-testing.secupay-ag.de/api/v2/',
   oAuthUrl: 'https://connect-testing.secupay-ag.de/oauth/',
   stompHost: 'connect-testing.secupay-ag.de',
-  stompEnabled: true,
+  stompEnabled: true
 };
 
 // create Secucard client
@@ -31,7 +31,7 @@ var server = new Hapi.Server();
 
 server.connection({
   host: 'localhost',
-  port: 9000,
+  port: 9000
 });
 
 server.route({
@@ -133,6 +133,54 @@ server.route({
         });
     }
 });
+
+server.route({
+    method: 'GET',
+    path: '/getCrowdfundingData',
+    handler: function(request, reply) {
+        var pcs = client.getService(Services.Payment.Transactions);
+
+        pcs.getCrowdfundingData('MRC_XYZ').then(function(res){
+            reply(res);
+        }).catch(function(err){
+            console.log(err);
+        });
+    }
+});
+
+/* Sample response for getCrowdfundingData:
+{
+    "project": {
+        "total_amount": 240768600,
+        "total_count": 994,
+        "debit": {
+            "count": 454,
+            "amount": 87320300
+        },
+        "credit_card": {
+            "count": 0,
+            "amount": 0
+        },
+        "prepay": {
+            "count": 540,
+            "amount": 153448300
+        }
+    },
+    "paid_out": 10000,
+    "open": {
+        "total": 239768600,
+        "outside_cancellation_period": {
+            "total": 174883400
+        },
+        "inside_cancellation_period": {
+            "total": 64885200,
+            "debit": 16722000,
+            "credit_card": 0,
+            "prepay": 48163200
+        }
+    }
+}
+*/
 
 server.start(function() {
   console.log('Running on 9000');
